@@ -3,12 +3,20 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {Elements} from '@stripe/react-stripe-js'
+import {loadStripe} from '@stripe/stripe-js'
+
+export const  stripePromise = loadStripe(
+    'pk_test_51J6x3OSF9BG4qwAfTWpqKHp1ygG3qfeCvwe2QSRSQ2Xhv01pLdLoaTFYRH2Jon4Gzk9SwHr5rJtNDEoixO0c7Pcb00qBrO9bGZ'
+)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <React.StrictMode>
+        <Elements stripe={stripePromise}>
+            <App/>
+        </Elements>
+    </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
